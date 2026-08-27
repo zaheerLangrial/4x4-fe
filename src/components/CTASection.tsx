@@ -1,0 +1,42 @@
+import { Phone } from "lucide-react"
+import { Reveal } from "@/components/Reveal"
+import { Button } from "@/components/ui/button"
+import { useQuote } from "@/context/QuoteContext"
+import { IMAGES, SITE } from "@/lib/site"
+
+export function CTASection() {
+  const { openQuote } = useQuote()
+
+  return (
+    <section className="relative overflow-hidden py-28 md:py-36">
+      <img
+        src={IMAGES.cta}
+        alt=""
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+      <div className="absolute inset-0 bg-black/75" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(27,147,41,0.22),transparent_55%)]" />
+      <div className="animate-glow pointer-events-none absolute inset-x-1/4 top-1/2 h-40 -translate-y-1/2 rounded-full bg-brand/10 blur-3xl" />
+
+      <div className="relative z-10 mx-auto max-w-4xl px-5 text-center md:px-8">
+        <Reveal>
+          <h2 className="display text-5xl leading-[0.9] text-white md:text-7xl">
+            Engine trouble?
+            <span className="mt-3 block">Let's get you back on the road.</span>
+          </h2>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button size="lg" onClick={() => openQuote()}>
+              Get a quote
+            </Button>
+            <Button size="lg" variant="outline" asChild>
+              <a href={`tel:${SITE.phoneTel}`}>
+                <Phone className="size-4" />
+                Call {SITE.phone}
+              </a>
+            </Button>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  )
+}
