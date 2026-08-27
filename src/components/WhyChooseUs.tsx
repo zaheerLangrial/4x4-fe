@@ -9,6 +9,7 @@ import {
   Award,
   Layers,
 } from "lucide-react"
+import { BrandChip } from "@/components/BrandChip"
 import { Reveal } from "@/components/Reveal"
 import { cn } from "@/lib/utils"
 
@@ -75,10 +76,8 @@ export function WhyChooseUs() {
     <section className="bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <p className="text-[11px] font-semibold tracking-[0.32em] text-brand uppercase">
-            Why choose us?
-          </p>
-          <h2 className="display mt-4 text-4xl text-white md:text-6xl">
+          <BrandChip>Why choose us?</BrandChip>
+          <h2 className="display mt-6 text-4xl text-white md:text-6xl">
             Expertise you can trust.
           </h2>
         </Reveal>
@@ -88,7 +87,7 @@ export function WhyChooseUs() {
             <Reveal key={item.title} delay={index * 0.04} className={item.className}>
               <article
                 className={cn(
-                  "group h-full border border-white/10 bg-steel p-6 transition-colors duration-500 hover:border-brand",
+                  "group h-full border border-white/10 bg-steel p-6 transition-all duration-500 hover:-translate-y-1 hover:border-brand hover:bg-brand/5 hover:shadow-[0_24px_50px_rgba(27,147,41,0.12)]",
                   item.featured && "flex flex-col justify-end md:min-h-[280px] md:p-8",
                 )}
               >

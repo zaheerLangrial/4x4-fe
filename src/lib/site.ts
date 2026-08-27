@@ -1,3 +1,15 @@
+import logo from "@/assets/4x4-logo.png"
+import about from "@/assets/about.jpg"
+import cta from "@/assets/cta.jpg"
+import engine from "@/assets/engine.jpg"
+import gClassic from "@/assets/g-classic.jpg"
+import gDiag from "@/assets/g-diag.jpg"
+import gLandrover from "@/assets/g-landrover.jpg"
+import gParts from "@/assets/g-parts.jpg"
+import gRebuild from "@/assets/g-rebuild.jpg"
+import gWorkshop from "@/assets/g-workshop.jpg"
+import hero from "@/assets/hero.jpg"
+
 export const SITE = {
   name: "4X4 Engine Rebuilds",
   phone: "0203 542 0100",
@@ -31,21 +43,19 @@ export const NAV_LINKS = [
   { label: "Contact Us", href: "#contact" },
 ] as const
 
-export function unsplash(id: string, width = 1800) {
-  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`
-}
-
 export const IMAGES = {
-  hero: unsplash("photo-1617531653332-bd46c24f2068", 2400),
-  about: unsplash("photo-1487754180451-c456f719a1fc", 1600),
-  engine: unsplash("photo-1486262715619-67b85e0b08d3", 2000),
-  cta: unsplash("photo-1617531653332-bd46c24f2068", 2200),
-  defender: unsplash("photo-1519641471654-76ce0107ad1b", 1600),
-  rangeRover: unsplash("photo-1606016159991-dfe4f2746ad5", 1600),
-  workshop: unsplash("photo-1619642751034-765dfdf7c58e", 1600),
-  diagnostics: unsplash("photo-1487754180451-c456f719a1fc", 1400),
-  tools: unsplash("photo-1625047509168-a7026f36de04", 1400),
-  classic: unsplash("photo-1533473359331-0138ec0b4826", 1400),
-  engineBay: unsplash("photo-1492144534655-ae79c964c9d7", 1400),
-  suvNight: unsplash("photo-1549317661-bd32c8ce0db2", 1600),
+  logo,
+  hero,
+  about,
+  engine,
+  cta,
+  defender: gLandrover,
+  rangeRover: hero,
+  workshop: gWorkshop,
+  diagnostics: gDiag,
+  tools: gParts,
+  classic: gClassic,
+  engineBay: engine,
+  rebuild: gRebuild,
+  parts: gParts,
 }

@@ -1,12 +1,13 @@
 import { MapPin, Phone, MessageCircle } from "lucide-react"
 import { useState, type FormEvent } from "react"
+import { BrandChip } from "@/components/BrandChip"
 import { Reveal } from "@/components/Reveal"
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { SITE } from "@/lib/site"
+import { IMAGES, SITE } from "@/lib/site"
 
 export function ContactSection() {
   const [sent, setSent] = useState(false)
@@ -20,10 +21,8 @@ export function ContactSection() {
     <section id="contact" className="bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <p className="text-[11px] font-semibold tracking-[0.32em] text-brand uppercase">
-            Contact
-          </p>
-          <h2 className="display mt-4 text-4xl text-white md:text-6xl">
+          <BrandChip>Contact</BrandChip>
+          <h2 className="display mt-6 text-4xl text-white md:text-6xl">
             Get in touch
           </h2>
         </Reveal>
@@ -123,8 +122,14 @@ export function ContactSection() {
                 rel="noreferrer"
                 className="relative block overflow-hidden border border-white/10"
               >
-                <div className="flex h-52 items-end bg-[linear-gradient(135deg,#111_0%,#0a0a0a_40%,#1b932922_100%)] p-6">
+                <div className="relative flex h-52 items-end overflow-hidden bg-ink p-6">
+                  <img
+                    src={IMAGES.workshop}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover opacity-40"
+                  />
                   <div className="hero-grid absolute inset-0 opacity-30" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent" />
                   <div className="relative">
                     <p className="display text-2xl text-white">Workshop map</p>
                     <p className="mt-1 text-sm text-white/55">

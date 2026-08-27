@@ -1,4 +1,4 @@
-import { IMAGES, unsplash } from "@/lib/site"
+import { IMAGES } from "@/lib/site"
 
 export type Article = {
   id: string
@@ -17,7 +17,7 @@ export const ARTICLES: Article[] = [
     title: "Discovery Sport in for timing failure and turbo repair",
     excerpt:
       "A Land Rover Discovery Sport arrived with timing failure and turbo damage. Our technicians diagnosed the root cause and rebuilt the powertrain with genuine OEM parts.",
-    image: IMAGES.defender,
+    image: IMAGES.workshop,
   },
   {
     id: "svr-ready",
@@ -26,7 +26,7 @@ export const ARTICLES: Article[] = [
     title: "Range Rover SVR engines rebuilt and ready for the road",
     excerpt:
       "High-performance SVR powertrains demand specialist care. Two rebuilds completed, dyno-tested and signed off by the director before collection.",
-    image: IMAGES.rangeRover,
+    image: IMAGES.hero,
   },
   {
     id: "ingenium-seizure",
@@ -35,6 +35,6 @@ export const ARTICLES: Article[] = [
     title: "Discovery 5 Ingenium seized engine — rebuilt, not replaced",
     excerpt:
       "We strip, machine and rebuild your original engine so V5 identity stays intact. This Ingenium 2.0D is back on the road with up to 24 months warranty.",
-    image: unsplash("photo-1486262715619-67b85e0b08d3", 1400),
+    image: IMAGES.engine,
   },
 ]

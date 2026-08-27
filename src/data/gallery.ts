@@ -1,4 +1,4 @@
-import { IMAGES, unsplash } from "@/lib/site"
+import { IMAGES } from "@/lib/site"
 
 export type GalleryCategory =
   | "All"
@@ -28,14 +28,14 @@ export const GALLERY_CATEGORIES: GalleryCategory[] = [
 export const GALLERY: GalleryItem[] = [
   {
     id: "g1",
-    src: IMAGES.engine,
+    src: IMAGES.rebuild,
     alt: "Precision engine rebuild on the bench",
     category: "Engine Rebuilds",
     tall: true,
   },
   {
     id: "g2",
-    src: IMAGES.rangeRover,
+    src: IMAGES.hero,
     alt: "Range Rover after specialist rebuild",
     category: "Range Rover",
   },
@@ -54,14 +54,14 @@ export const GALLERY: GalleryItem[] = [
   },
   {
     id: "g5",
-    src: unsplash("photo-1612825173281-9a193378527e", 1400),
-    alt: "Range Rover ready for collection",
-    category: "Range Rover",
+    src: IMAGES.engine,
+    alt: "Engine internals during a specialist rebuild",
+    category: "Engine Rebuilds",
   },
   {
     id: "g6",
-    src: IMAGES.tools,
-    alt: "Engine strip-down in progress",
+    src: IMAGES.parts,
+    alt: "Genuine OEM parts staged for a rebuild",
     category: "Before & After",
   },
   {
@@ -73,20 +73,20 @@ export const GALLERY: GalleryItem[] = [
   {
     id: "g8",
     src: IMAGES.about,
-    alt: "Workshop bay and tooling",
+    alt: "Specialist technician in the workshop",
     category: "Workshop",
     tall: true,
   },
   {
     id: "g9",
-    src: IMAGES.engineBay,
-    alt: "Completed engine bay after rebuild",
+    src: IMAGES.diagnostics,
+    alt: "Diagnostics and electrical inspection",
     category: "Before & After",
   },
   {
     id: "g10",
-    src: unsplash("photo-1609521263047-f8f205293f24", 1400),
-    alt: "Land Rover on the road after rebuild",
-    category: "Engine Rebuilds",
+    src: IMAGES.cta,
+    alt: "Vehicle ready for collection after rebuild",
+    category: "Range Rover",
   },
 ]

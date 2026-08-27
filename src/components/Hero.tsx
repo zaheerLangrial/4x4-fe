@@ -1,6 +1,7 @@
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
 import { ArrowRight } from "lucide-react"
-import { useState, type FormEvent } from "react"
+import { useRef, useState, type FormEvent, type MouseEvent } from "react"
+import { BrandChip } from "@/components/BrandChip"
 import { Button } from "@/components/ui/button"
 import { useQuote } from "@/context/QuoteContext"
 import { IMAGES } from "@/lib/site"
@@ -8,6 +9,20 @@ import { IMAGES } from "@/lib/site"
 export function Hero() {
   const { openQuote } = useQuote()
   const [reg, setReg] = useState("")
+  const ref = useRef<HTMLElement>(null)
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const sx = useSpring(mx, { stiffness: 40, damping: 20 })
+  const sy = useSpring(my, { stiffness: 40, damping: 20 })
+  const x = useTransform(sx, [-1, 1], ["-2.2%", "2.2%"])
+  const y = useTransform(sy, [-1, 1], ["-2.2%", "2.2%"])
+
+  function onMove(event: MouseEvent<HTMLElement>) {
+    const rect = ref.current?.getBoundingClientRect()
+    if (!rect) return
+    mx.set((event.clientX - rect.left) / rect.width * 2 - 1)
+    my.set((event.clientY - rect.top) / rect.height * 2 - 1)
+  }
 
   function onProceed(event: FormEvent) {
     event.preventDefault()
@@ -15,63 +30,68 @@ export function Hero() {
   }
 
   return (
-    <section id="home" className="relative min-h-[100svh] overflow-hidden">
+    <section
+      id="home"
+      ref={ref}
+      onMouseMove={onMove}
+      className="relative min-h-[100svh] overflow-hidden scanlines"
+    >
       <motion.div
-        className="absolute inset-0"
-        initial={{ scale: 1.12 }}
-        animate={{ scale: 1 }}
-        transition={{ duration: 6, ease: [0.22, 1, 0.36, 1] }}
+        className="absolute inset-[-4%]"
+        style={{ x, y }}
+        initial={{ scale: 1.16 }}
+        animate={{ scale: 1.04 }}
+        transition={{ duration: 7, ease: [0.22, 1, 0.36, 1] }}
       >
         <img
           src={IMAGES.hero}
-          alt="Range Rover on the road"
+          alt="Range Rover in the 4X4 Engine Rebuilds workshop"
           className="h-full w-full object-cover object-center"
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-linear-to-r from-black/85 via-black/55 to-black/35" />
-      <div className="absolute inset-0 bg-linear-to-t from-ink via-transparent to-black/40" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(27,147,41,0.18),transparent_45%)]" />
-      <div className="hero-grid pointer-events-none absolute inset-0 opacity-40" />
+      <div className="absolute inset-0 bg-linear-to-r from-black/72 via-black/38 to-black/12" />
+      <div className="absolute inset-0 bg-linear-to-t from-ink via-transparent to-black/30" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(27,147,41,0.22),transparent_42%)]" />
+      <div className="hero-grid pointer-events-none absolute inset-0 opacity-30" />
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-28 md:px-8 lg:flex-row lg:items-end lg:justify-between lg:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-7xl flex-col justify-end px-5 pb-16 pt-32 md:px-8 lg:flex-row lg:items-end lg:justify-between lg:pb-20">
         <div className="max-w-3xl">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-[11px] font-semibold tracking-[0.38em] text-brand uppercase"
+            transition={{ duration: 0.6, delay: 0.12 }}
           >
-            Land Rover & Range Rover Specialists
-          </motion.p>
+            <BrandChip>Land Rover & Range Rover Specialists</BrandChip>
+          </motion.div>
 
-          <h1 className="display mt-5 text-5xl leading-[0.88] text-white sm:text-7xl lg:text-[7.25rem]">
+          <h1 className="display mt-6 text-6xl leading-[0.84] text-white sm:text-8xl lg:text-[8.5rem]">
             <span className="block overflow-hidden">
               <motion.span
                 className="block"
                 initial={{ y: "110%" }}
                 animate={{ y: "0%" }}
-                transition={{ duration: 0.8, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.85, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
               >
                 Engineered to
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span
-                className="block"
+                className="block text-brand"
                 initial={{ y: "110%" }}
                 animate={{ y: "0%" }}
-                transition={{ duration: 0.8, delay: 0.38, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.85, delay: 0.36, ease: [0.22, 1, 0.36, 1] }}
               >
                 perform.
               </motion.span>
             </span>
-            <span className="mt-2 block overflow-hidden text-white/90">
+            <span className="mt-1 block overflow-hidden">
               <motion.span
                 className="block"
                 initial={{ y: "110%" }}
                 animate={{ y: "0%" }}
-                transition={{ duration: 0.8, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.85, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
               >
                 Built to last.
               </motion.span>
@@ -105,10 +125,10 @@ export function Hero() {
 
         <motion.form
           onSubmit={onProceed}
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 48 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
-          className="animate-glow mt-10 w-full max-w-md border border-brand/50 bg-black/55 p-5 backdrop-blur-md lg:mt-0"
+          transition={{ duration: 0.75, delay: 1.05, ease: [0.22, 1, 0.36, 1] }}
+          className="animate-glow mt-10 w-full max-w-md border border-brand/45 bg-black/60 p-6 backdrop-blur-xl lg:mt-0"
         >
           <p className="text-[11px] font-semibold tracking-[0.22em] text-white uppercase">
             Please enter your reg to get an instant quote
@@ -119,7 +139,7 @@ export function Hero() {
               onChange={(e) => setReg(e.target.value.toUpperCase())}
               placeholder="Enter Your Reg No."
               maxLength={8}
-              className="display h-14 flex-1 bg-[#F7D117] px-4 text-center text-xl tracking-[0.22em] text-black outline-none placeholder:text-black/40"
+              className="display h-14 flex-1 bg-[#F7D117] px-4 text-center text-2xl tracking-[0.22em] text-black outline-none placeholder:text-black/40"
               aria-label="Vehicle registration"
             />
             <Button type="submit" className="h-14 px-6">

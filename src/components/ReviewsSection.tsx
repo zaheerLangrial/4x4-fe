@@ -2,6 +2,7 @@ import Autoplay from "embla-carousel-autoplay"
 import { Star } from "lucide-react"
 import { useRef } from "react"
 import { AnimatedCounter } from "@/components/AnimatedCounter"
+import { BrandChip } from "@/components/BrandChip"
 import { ReviewCard } from "@/components/ReviewCard"
 import { Reveal } from "@/components/Reveal"
 import {
@@ -24,10 +25,8 @@ export function ReviewsSection() {
         <Reveal>
           <div className="flex flex-col justify-between gap-8 border-b border-white/10 pb-10 md:flex-row md:items-end">
             <div>
-              <p className="text-[11px] font-semibold tracking-[0.32em] text-brand uppercase">
-                Reviews
-              </p>
-              <h2 className="display mt-3 text-5xl text-white md:text-7xl">
+              <BrandChip>Reviews</BrandChip>
+              <h2 className="display mt-5 text-5xl text-white md:text-7xl">
                 <AnimatedCounter value={4.95} decimals={2} />
                 <span className="text-white/40"> / 5</span>
               </h2>

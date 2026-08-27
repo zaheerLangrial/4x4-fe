@@ -9,6 +9,7 @@ export function ServicesSection() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
           <SectionHeading
+            eyebrow="What we do"
             title="Our Services"
             subtitle="Specialist care for your Land Rover & Range Rover"
           />

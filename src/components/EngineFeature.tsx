@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { BadgeCheck, Camera, FlaskConical, Shield } from "lucide-react"
+import { BrandChip } from "@/components/BrandChip"
 import { ImageReveal, Reveal } from "@/components/Reveal"
 import { IMAGES } from "@/lib/site"
 
@@ -24,7 +25,8 @@ export function EngineFeature() {
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <div className="grid items-end gap-8 lg:grid-cols-2">
           <Reveal>
-            <h2 className="display text-5xl leading-[0.9] text-white md:text-7xl">
+            <BrandChip>Engine rebuilds</BrandChip>
+            <h2 className="display mt-6 text-5xl leading-[0.9] text-white md:text-7xl">
               Your engine.
               <span className="mt-2 block text-brand">Rebuilt right.</span>
             </h2>

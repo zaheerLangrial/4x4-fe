@@ -29,7 +29,7 @@ export function Navbar() {
           : "bg-transparent",
       )}
     >
-      <div className="mx-auto flex h-20 max-w-[92rem] items-center justify-between gap-4 px-5 md:px-8">
+      <div className="mx-auto flex h-24 max-w-[92rem] items-center justify-between gap-4 px-5 md:px-8">
         <a href="#home" aria-label="4X4 Engine Rebuilds home">
           <Logo />
         </a>
@@ -67,7 +67,7 @@ export function Navbar() {
       <Sheet open={open} onOpenChange={setOpen}>
         <SheetContent side="right" className="border-l border-white/10 p-0">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
-          <div className="flex h-20 items-center px-6">
+          <div className="flex h-24 items-center px-6">
             <Logo />
           </div>
           <AnimatePresence>

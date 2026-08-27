@@ -1,5 +1,6 @@
 import { motion, useScroll, useSpring, useTransform } from "framer-motion"
 import { useRef } from "react"
+import { BrandChip } from "@/components/BrandChip"
 import { Reveal } from "@/components/Reveal"
 
 const STEPS = [
@@ -43,10 +44,8 @@ export function ProcessTimeline() {
     <section className="bg-graphite py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
         <Reveal>
-          <p className="text-[11px] font-semibold tracking-[0.32em] text-brand uppercase">
-            Our process
-          </p>
-          <h2 className="display mt-4 max-w-3xl text-4xl leading-[0.95] text-white md:text-6xl">
+          <BrandChip>Our process</BrandChip>
+          <h2 className="display mt-6 max-w-3xl text-4xl leading-[0.95] text-white md:text-6xl">
             From breakdown to back on the road.
           </h2>
         </Reveal>

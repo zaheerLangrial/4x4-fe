@@ -24,7 +24,7 @@ export function ServiceCard({ service, index }: { service: Service; index: numbe
           openQuote()
         }
       }}
-      className="group relative flex h-full cursor-pointer flex-col overflow-hidden border border-white/10 bg-steel text-left transition-colors duration-500 hover:border-brand"
+      className="group relative flex h-full cursor-pointer flex-col overflow-hidden border border-white/10 bg-steel text-left transition-colors duration-500 hover:border-brand hover:shadow-[0_20px_50px_rgba(27,147,41,0.12)]"
     >
       <div className="relative h-48 overflow-hidden">
         <img

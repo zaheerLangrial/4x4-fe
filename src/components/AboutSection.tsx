@@ -1,4 +1,5 @@
 import { Check } from "lucide-react"
+import { BrandChip } from "@/components/BrandChip"
 import { ImageReveal, Reveal } from "@/components/Reveal"
 import { Button } from "@/components/ui/button"
 import { IMAGES } from "@/lib/site"
@@ -11,7 +12,8 @@ const STATS = [
 
 export function AboutSection() {
   return (
-    <section id="about" className="bg-ink py-24 md:py-32">
+    <section id="about" className="relative overflow-hidden bg-ink py-24 md:py-32">
+      <div className="pointer-events-none absolute top-24 right-0 hidden h-64 w-px bg-linear-to-b from-transparent via-brand/50 to-transparent lg:block" />
       <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 md:px-8 lg:grid-cols-2 lg:gap-20">
         <ImageReveal className="relative">
           <div className="absolute -inset-3 border border-brand/80" />
@@ -21,14 +23,18 @@ export function AboutSection() {
             alt="Specialist technicians in the 4X4 workshop"
             className="relative aspect-[4/5] w-full object-cover md:aspect-[5/6]"
           />
+          <div className="absolute right-4 bottom-4 border border-white/15 bg-black/70 px-4 py-3 backdrop-blur-md">
+            <p className="display text-2xl text-brand">30+</p>
+            <p className="text-[10px] tracking-[0.2em] text-white/70 uppercase">
+              Years specialist
+            </p>
+          </div>
         </ImageReveal>
 
         <div>
           <Reveal>
-            <p className="text-[11px] font-semibold tracking-[0.32em] text-brand uppercase">
-              About 4X4 Engine Rebuilds
-            </p>
-            <h2 className="display mt-4 text-4xl leading-[0.95] text-white md:text-5xl lg:text-6xl">
+            <BrandChip>About 4X4 Engine Rebuilds</BrandChip>
+            <h2 className="display mt-6 text-4xl leading-[0.95] text-white md:text-5xl lg:text-6xl">
               Specialists who know your 4x4 inside out.
             </h2>
           </Reveal>

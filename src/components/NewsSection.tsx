@@ -13,7 +13,7 @@ export function NewsSection() {
         <div className="mt-14 grid gap-6 md:grid-cols-3">
           {ARTICLES.map((article, index) => (
             <Reveal key={article.id} delay={index * 0.08}>
-              <article className="group flex h-full flex-col border border-white/10 bg-steel">
+              <article className="group flex h-full flex-col border border-white/10 bg-steel transition-all duration-500 hover:-translate-y-1 hover:border-brand hover:shadow-[0_24px_50px_rgba(27,147,41,0.12)]">
                 <div className="overflow-hidden">
                   <img
                     src={article.image}

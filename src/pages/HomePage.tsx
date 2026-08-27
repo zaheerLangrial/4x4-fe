@@ -5,6 +5,7 @@ import { EngineFeature } from "@/components/EngineFeature"
 import { Footer } from "@/components/Footer"
 import { GallerySection } from "@/components/GallerySection"
 import { Hero } from "@/components/Hero"
+import { Marquee } from "@/components/Marquee"
 import { Navbar } from "@/components/Navbar"
 import { NewsSection } from "@/components/NewsSection"
 import { ProcessTimeline } from "@/components/ProcessTimeline"
@@ -20,6 +21,7 @@ export function HomePage() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <TrustBar />
         <AboutSection />
         <ServicesSection />

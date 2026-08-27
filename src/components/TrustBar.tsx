@@ -1,4 +1,6 @@
+import { motion } from "framer-motion"
 import { AnimatedCounter } from "@/components/AnimatedCounter"
+import { Separator } from "@/components/ui/separator"
 
 const STATS = [
   { value: 30, suffix: "+", label: "Years Experience", decimals: 0 },
@@ -10,14 +12,25 @@ const STATS = [
 
 export function TrustBar() {
   return (
-    <section className="border-y border-white/8 bg-steel">
-      <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-white/8 md:grid-cols-5 md:divide-x md:divide-y-0">
-        {STATS.map((stat) => (
-          <div
+    <section className="relative border-y border-white/8 bg-steel">
+      <div className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-brand to-transparent" />
+      <div className="mx-auto grid max-w-7xl grid-cols-2 md:grid-cols-5">
+        {STATS.map((stat, index) => (
+          <motion.div
             key={stat.label}
-            className="flex flex-col items-center px-4 py-8 text-center"
+            initial={{ opacity: 0, y: 18 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08, duration: 0.5 }}
+            className="group relative flex flex-col items-center px-4 py-9 text-center"
           >
-            <p className="display text-3xl text-white md:text-4xl">
+            {index > 0 ? (
+              <Separator
+                orientation="vertical"
+                className="absolute top-6 bottom-6 left-0 hidden bg-white/8 md:block"
+              />
+            ) : null}
+            <p className="display text-3xl text-white transition-colors duration-300 group-hover:text-brand md:text-4xl">
               {stat.value !== null ? (
                 <AnimatedCounter
                   value={stat.value}
@@ -31,7 +44,7 @@ export function TrustBar() {
             <p className="mt-2 text-[10px] font-semibold tracking-[0.22em] text-white/45 uppercase">
               {stat.label}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
