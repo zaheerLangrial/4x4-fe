@@ -53,11 +53,28 @@ export function QuoteDialog() {
         ) : (
           <form onSubmit={onSubmit} className="mt-6 grid gap-4">
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Name" name="name" required />
-              <Field label="Email" name="email" type="email" required />
+              <Field
+                label="Name"
+                name="name"
+                placeholder="e.g. James Walker"
+                required
+              />
+              <Field
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="e.g. james@email.com"
+                required
+              />
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Field label="Phone" name="phone" type="tel" required />
+              <Field
+                label="Phone"
+                name="phone"
+                type="tel"
+                placeholder="e.g. 07700 900 000"
+                required
+              />
               <div className="grid gap-2">
                 <Label htmlFor="quote-reg">Vehicle registration</Label>
                 <Input
@@ -96,16 +113,24 @@ function Field({
   name,
   type = "text",
   required,
+  placeholder,
 }: {
   label: string
   name: string
   type?: string
   required?: boolean
+  placeholder?: string
 }) {
   return (
     <div className="grid gap-2">
       <Label htmlFor={name}>{label}</Label>
-      <Input id={name} name={name} type={type} required={required} />
+      <Input
+        id={name}
+        name={name}
+        type={type}
+        required={required}
+        placeholder={placeholder}
+      />
     </div>
   )
 }

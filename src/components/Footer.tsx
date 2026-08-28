@@ -1,16 +1,17 @@
 import { ArrowUpRight } from "lucide-react"
 import type { ReactNode } from "react"
+import { Link } from "react-router-dom"
 import { Logo } from "@/components/Logo"
 import { FacebookIcon, InstagramIcon } from "@/components/SocialIcons"
 import { NAV_LINKS, SITE } from "@/lib/site"
 
 const SERVICE_LINKS = [
-  { label: "Engine Rebuilds", href: "#services" },
-  { label: "Servicing", href: "#services" },
-  { label: "Repairs", href: "#services" },
-  { label: "Diagnostics", href: "#services" },
-  { label: "MOT", href: "#services" },
-  { label: "Air Conditioning", href: "#services" },
+  { label: "Engine Rebuilds", href: "/services" },
+  { label: "Servicing", href: "/services" },
+  { label: "Repairs", href: "/services" },
+  { label: "Diagnostics", href: "/services" },
+  { label: "MOT", href: "/services" },
+  { label: "Air Conditioning", href: "/services" },
 ]
 
 export function Footer() {
@@ -23,7 +24,9 @@ export function Footer() {
       <div className="h-px w-full bg-linear-to-r from-transparent via-brand to-transparent" />
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 md:grid-cols-2 md:px-8 lg:grid-cols-12 lg:py-20">
         <div className="lg:col-span-4">
-          <Logo />
+          <Link to="/" aria-label="4X4 Engine Rebuilds home">
+            <Logo />
+          </Link>
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-white/55">
             Land Rover & Range Rover 4×4 Engine Specialists.
           </p>
@@ -36,12 +39,12 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {companyLinks.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="text-sm text-white/70 transition-colors hover:text-brand"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -54,12 +57,12 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {SERVICE_LINKS.map((link) => (
               <li key={link.label}>
-                <a
-                  href={link.href}
+                <Link
+                  to={link.href}
                   className="text-sm text-white/70 transition-colors hover:text-brand"
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

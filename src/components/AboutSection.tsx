@@ -1,4 +1,5 @@
 import { Check } from "lucide-react"
+import { Link } from "react-router-dom"
 import { BrandChip } from "@/components/BrandChip"
 import { ImageReveal, Reveal } from "@/components/Reveal"
 import { Button } from "@/components/ui/button"
@@ -10,7 +11,13 @@ const STATS = [
   "Specialist Technicians",
 ]
 
-export function AboutSection() {
+export function AboutSection({
+  ctaHref = "/about",
+  ctaLabel = "Learn more",
+}: {
+  ctaHref?: string
+  ctaLabel?: string
+}) {
   return (
     <section id="about" className="relative overflow-hidden bg-ink py-24 md:py-32">
       <div className="pointer-events-none absolute top-24 right-0 hidden h-64 w-px bg-linear-to-b from-transparent via-brand/50 to-transparent lg:block" />
@@ -61,7 +68,7 @@ export function AboutSection() {
               ))}
             </ul>
             <Button className="mt-8" asChild>
-              <a href="#contact">Learn more</a>
+              <Link to={ctaHref}>{ctaLabel}</Link>
             </Button>
           </Reveal>
         </div>
