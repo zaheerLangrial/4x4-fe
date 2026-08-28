@@ -213,8 +213,13 @@
 }
 
 .nav-link:hover::after,
-.nav-link[data-active="true"]::after {
+.nav-link[aria-current="page"]::after,
+.nav-link [data-active="true"]::after {
   width: 100%;
+}
+
+.perspective-3d {
+  perspective: 1400px;
 }
 
 .scrollbar-none {

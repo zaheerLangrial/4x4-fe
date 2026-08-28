@@ -15,7 +15,7 @@ import {
 } from "@/data/gallery"
 import { cn } from "@/lib/utils"
 
-export function GallerySection() {
+export function GallerySection({ showHeading = true }: { showHeading?: boolean }) {
   const [filter, setFilter] = useState<GalleryCategory>("All")
   const [active, setActive] = useState<GalleryItem | null>(null)
 
@@ -30,13 +30,15 @@ export function GallerySection() {
   return (
     <section id="gallery" className="bg-ink py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <SectionHeading
-            eyebrow="Gallery"
-            title="Our Work"
-            subtitle="A look inside the workshop"
-          />
-        </Reveal>
+        {showHeading ? (
+          <Reveal>
+            <SectionHeading
+              eyebrow="Gallery"
+              title="Our Work"
+              subtitle="A look inside the workshop"
+            />
+          </Reveal>
+        ) : null}
 
         <Tabs className="mt-10" aria-label="Gallery filters">
           {GALLERY_CATEGORIES.map((cat) => (

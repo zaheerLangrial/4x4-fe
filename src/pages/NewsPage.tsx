@@ -1,24 +1,21 @@
-import { ArrowUpRight } from "lucide-react"
 import { Link } from "react-router-dom"
+import { PageHero } from "@/components/PageHero"
 import { Reveal } from "@/components/Reveal"
-import { SectionHeading } from "@/components/SectionHeading"
 import { TiltCard } from "@/components/TiltCard"
-import { Button } from "@/components/ui/button"
 import { ARTICLES } from "@/data/news"
+import { IMAGES } from "@/lib/site"
 
-export function NewsSection() {
+export function NewsPage() {
   return (
-    <section id="news" className="bg-graphite py-24 md:py-32">
-      <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <Reveal>
-          <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-            <SectionHeading eyebrow="Journal" title="Latest News" />
-            <Button variant="outline" asChild>
-              <Link to="/news">View all news</Link>
-            </Button>
-          </div>
-        </Reveal>
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
+    <>
+      <PageHero
+        eyebrow="News"
+        title="From the workshop floor."
+        subtitle="Recent rebuilds, timing failures, SVR work and the jobs that come through Barking."
+        image={IMAGES.workshop}
+      />
+      <section className="bg-ink py-20 md:py-28">
+        <div className="mx-auto grid max-w-7xl gap-6 px-5 md:grid-cols-3 md:px-8">
           {ARTICLES.map((article, index) => (
             <Reveal key={article.id} delay={index * 0.08}>
               <TiltCard>
@@ -37,15 +34,14 @@ export function NewsSection() {
                     <p className="text-[10px] font-semibold tracking-[0.24em] text-brand uppercase">
                       {article.date} · {article.category}
                     </p>
-                    <h3 className="display mt-3 text-2xl leading-tight text-white">
+                    <h2 className="display mt-3 text-2xl leading-tight text-white">
                       {article.title}
-                    </h3>
+                    </h2>
                     <p className="mt-3 flex-1 text-sm leading-relaxed text-white/55">
                       {article.excerpt}
                     </p>
-                    <span className="mt-6 inline-flex items-center gap-2 text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase transition-colors group-hover:text-brand">
-                      Read more
-                      <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    <span className="mt-6 text-[11px] font-semibold tracking-[0.2em] text-white/70 uppercase group-hover:text-brand">
+                      Read article
                     </span>
                   </div>
                 </Link>
@@ -53,7 +49,7 @@ export function NewsSection() {
             </Reveal>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   )
 }

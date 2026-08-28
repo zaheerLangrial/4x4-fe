@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 import { Menu } from "lucide-react"
 import { useEffect, useState } from "react"
+import { Link, NavLink } from "react-router-dom"
 import { Logo } from "@/components/Logo"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet"
@@ -30,19 +31,20 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex h-24 max-w-[92rem] items-center justify-between gap-4 px-5 md:px-8">
-        <a href="#home" aria-label="4X4 Engine Rebuilds home">
+        <Link to="/" aria-label="4X4 Engine Rebuilds home">
           <Logo />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-4 xl:gap-7 lg:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <NavLink
               key={link.href}
-              href={link.href}
+              to={link.href}
+              end={link.href === "/"}
               className="nav-link text-[10px] font-semibold tracking-[0.16em] text-white/80 uppercase transition-colors hover:text-white xl:text-[11px] xl:tracking-[0.2em]"
             >
               {link.label}
-            </a>
+            </NavLink>
           ))}
         </nav>
 
@@ -68,7 +70,9 @@ export function Navbar() {
         <SheetContent side="right" className="border-l border-white/10 p-0">
           <SheetTitle className="sr-only">Navigation</SheetTitle>
           <div className="flex h-24 items-center px-6">
-            <Logo />
+            <Link to="/" onClick={() => setOpen(false)}>
+              <Logo />
+            </Link>
           </div>
           <AnimatePresence>
             {open ? (
@@ -78,17 +82,25 @@ export function Navbar() {
                 className="flex flex-1 flex-col gap-2 px-6 pt-8"
               >
                 {NAV_LINKS.map((link, index) => (
-                  <motion.a
+                  <motion.div
                     key={link.href}
-                    href={link.href}
-                    onClick={() => setOpen(false)}
                     initial={{ opacity: 0, x: 24 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 * index, duration: 0.35 }}
-                    className="display border-b border-white/8 py-4 text-3xl text-white"
                   >
-                    {link.label}
-                  </motion.a>
+                    <NavLink
+                      to={link.href}
+                      end={link.href === "/"}
+                      onClick={() => setOpen(false)}
+                      className="display block border-b border-white/8 py-4 text-3xl text-white"
+                    >
+                      {({ isActive }) => (
+                        <span className={isActive ? "text-brand" : undefined}>
+                          {link.label}
+                        </span>
+                      )}
+                    </NavLink>
+                  </motion.div>
                 ))}
                 <Button
                   className="mt-8 w-full"
